@@ -1,0 +1,124 @@
+{% extends "nav.html" %}
+{% block event %}
+
+<body class="bg-gray-50 p-6">
+  <div class="max-w-[1400px] mx-auto">
+    <!-- header -->
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="text-2xl font-semibold mt-6 ml-6">Dashboard</h1>
+      <div class="flex items-center gap-4">
+      <div>
+        <a href="{% url 'create-event' %}">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">ADD NEW EVENT</button>
+        </a>
+      </div>
+        <button
+          class="w-10 h-10 bg-blue-500 rounded-full text-white font-semibold flex items-center justify-center">B</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- card Section -->
+      <section class="card grid grid-cols-4 gap-6 mb-8">
+        <!-- card-1 -->
+        <a href="?filter=participants" class="bg-white rounded-xl p-6 shadow-sm block hover:shadow-md transition">
+          <h3 class="text-sm font-medium text-gray-500 mb-4">Total Participants</h3>
+          <section class="flex justify-between items-start">
+            <div>
+              <p class="text-3xl font-semibold mb-1">{{ total_participants }}</p>
+            </div>
+            <div class="bg-blue-100 p-3 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6 text-blue-600">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+              </svg>
+            </div>
+          </section>
+        </a>
+
+        <!-- card-2 (Total Events) -->
+        <a href="?filter=total" class="bg-white rounded-xl p-6 shadow-sm block hover:shadow-md transition">
+          <h3 class="text-sm font-medium text-gray-500 mb-4">Total Events</h3>
+          <section class="flex justify-between items-start">
+            <div>
+              <p class="text-3xl font-semibold mb-1">{{ total_event }}</p>
+            </div>
+            <div class="bg-green-100 p-3 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-6 h-6 text-green-600">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </div>
+          </section>
+        </a>
+
+        <!-- card-3 (Upcoming Events) -->
+        <a href="?filter=upcoming" class="bg-white rounded-xl p-6 shadow-sm block hover:shadow-md transition">
+          <h3 class="text-sm font-medium text-gray-500 mb-4">Upcoming Events</h3>
+          <section class="flex justify-between items-start">
+            <div>
+              <p class="text-3xl font-semibold mb-1">{{ upcomming_events }}</p>
+            </div>
+            <div class="bg-yellow-100 p-3 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-6 h-6 text-yellow-600">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+            </div>
+          </section>
+        </a>
+
+        <!-- card-4 (Past Events) -->
+        <a href="?filter=past" class="bg-white rounded-xl p-6 shadow-sm block hover:shadow-md transition">
+          <h3 class="text-sm font-medium text-gray-500 mb-4">Past Events</h3>
+          <section class="flex justify-between items-start">
+            <div>
+              <p class="text-3xl font-semibold mb-1">{{ past_events }}</p>
+            </div>
+            <div class="bg-purple-100 p-3 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6 text-purple-600">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+              </svg>
+            </div>
+          </section>
+        </a>
+      </section>
+
+      <!-- Events Listing -->
+       <section class="bg-white rounded-xl shadow-sm p-6">
+          <h2 class="text-xl font-semibold mb-4">{{ section_title }}</h2>
+          <div class="space-y-3">
+            {% for event in todays_events %}
+              <div class="bg-gray-50 shadow rounded-lg p-4">
+                <h4 class="font-bold text-lg">{{ event.name }}</h4>
+                <p class="text-sm text-gray-600">{{ event.date }} - {{ event.location }}</p>
+
+                <!-- Buttons row -->
+                <div class="flex gap-5 mt-3">
+                  <a href="{% url "update-event" event.id %}" 
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+                    EDIT
+                  </a>
+                  <a href="{% url 'delete-event' event.id %}" 
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    DELETE
+                  </a>
+                </div>
+              </div>
+            {% empty %}
+              <p class="text-gray-500">No events found.</p>
+            {% endfor %}
+          </div>
+       </section>
+
+        
+    </main>
+  </div>
+</body>
+
+{% endblock event %}

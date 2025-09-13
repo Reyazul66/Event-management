@@ -1,0 +1,23 @@
+{% load static %}
+<link href="{% static 'css/output.css' %}" rel="stylesheet">
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full text-center">
+    <h1 class="text-2xl font-bold text-red-600 mb-4">Confirm Deletion</h1>
+    <p class="text-gray-700 mb-6">
+      Are you sure you want to delete the event: 
+      <span class="font-semibold text-gray-900">"{{ event.title }}"</span>?
+    </p>
+
+    <form method="post" action="{% url 'delete-event' event.id %}" class="flex justify-center gap-4">
+      {% csrf_token %}
+      <button type="submit" 
+              class="bg-red-500 hover:bg-red-600 text-white font-semibold px-5 py-2 rounded-lg shadow-md transition">
+        Yes, Delete
+      </button>
+      <a href="{% url 'dashboard' %}" 
+         class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-5 py-2 rounded-lg shadow-md transition">
+        Cancel
+      </a>
+    </form>
+  </div>
+</div>
